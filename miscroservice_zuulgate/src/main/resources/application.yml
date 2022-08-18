@@ -1,0 +1,22 @@
+server:
+  port: 8333
+
+spring:
+  application:
+    name: microservice-zuulgate
+  zipkin:
+    base-url: http://127.0.0.1:9041
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+    instance:
+      prefer-ip-address: true

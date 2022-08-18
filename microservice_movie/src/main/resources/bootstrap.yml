@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:12000
+      name: movie
+      profile: dev
+      label: main
+  rabbitmq:
+    host: 127.0.0.1
+
+  #当config注册到eureka使用高可用的情况下，必须加这块
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+  instance:
+    prefer-ip-address: true

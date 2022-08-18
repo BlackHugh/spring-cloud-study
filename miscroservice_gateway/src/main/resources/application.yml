@@ -1,0 +1,31 @@
+server:
+  port: 8222
+
+spring:
+  application:
+    name: microservice-gateway
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+    instance:
+      prefer-ip-address: true
+
+#path和配置名和serivceId一样的时候可以省略下列配置
+#zuul:
+#  routes:
+#    microservice-user:
+#      path: /microservice-user
+#      serviceId: microservice-user
+#    microservice-movie:
+#      path: /microservice-movie
+#      serviceId: microservice-movie
+
+#让预定义的错误过滤器失效
+zuul:
+  SendErrorFilter:
+    error:
+      disable: false

@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    config:
+      #当点config的时候使用链接配置
+#      uri: http://127.0.0.1:12000
+      name: user
+      profile: dev
+      label: main
+      #从eureka从发现config服务，实现高可用
+      discovery:
+        enabled: true
+        service-id: microservice-config
+  rabbitmq:
+    host: 127.0.0.1
+
+#当config注册到eureka使用高可用的情况下，必须加这块
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+  instance:
+    prefer-ip-address: true

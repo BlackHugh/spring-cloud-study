@@ -1,0 +1,11 @@
+#http://localhost:9041/zipkin
+server:
+  port: 9041
+spring:
+  application:
+    name: zipkin-server
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false

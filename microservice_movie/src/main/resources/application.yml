@@ -1,0 +1,34 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: microservice-movie
+  zipkin:
+    base-url: http://127.0.0.1:9041
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true  #服务调用方必须是true
+    registry-fetch-interval-seconds: 60  #服务提供方向eurekaserver获取注册表的间隔，默认30s
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+    instance:
+      prefer-ip-address: true #优先使用ip注册到eureka
+      lease-expiration-duration-in-seconds: 90  #服务失效时间
+      lease-renewal-interval-in-seconds: 30   #服务续约间隔
+
+    #更改ribbon负载均衡算法
+    microservice-user:
+      ribbon:
+        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#开启feign的熔断功能
+feign:
+  hystrix:
+    enabled: true

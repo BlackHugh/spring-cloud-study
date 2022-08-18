@@ -1,0 +1,38 @@
+server:
+  port: 12000
+
+spring:
+  application:
+    name: microservice-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/BlackHugh/springcloud-config.git
+          force-pull: true
+#          username: 2283991288@qq.com
+#          password: dobbit1207
+          basedir: d:/temp/sprigclud-config
+          default-label: main
+  rabbitmq:
+    host: 127.0.0.1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+    instance:
+      prefer-ip-address: true #优先使用ip注册到eureka
+      lease-expiration-duration-in-seconds: 90  #服务失效时间
+      lease-renewal-interval-in-seconds: 30   #服务续约间隔
+      #健康检查
+      healthcheck:
+        enabled: true

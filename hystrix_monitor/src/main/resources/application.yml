@@ -1,0 +1,6 @@
+server:
+  port: 7777
+
+spring:
+  appication:
+    name: hystrix-monitor
